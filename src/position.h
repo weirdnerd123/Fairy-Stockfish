@@ -222,6 +222,7 @@ public:
   const std::vector<Direction>& getConnectDirections() const;
   int connect_nxn() const;
   int collinear_n() const;
+  bool self_capture() const;
 
   CheckCount checks_remaining(Color c) const;
   MaterialCounting material_counting() const;
@@ -896,6 +897,11 @@ inline Bitboard Position::promoted_soldiers(Color c) const {
 inline bool Position::makpong() const {
   assert(var != nullptr);
   return var->makpongRule;
+}
+
+inline bool Position::self_capture() const {
+  assert(var != nullptr);
+  return var->selfCapture;
 }
 
 inline int Position::n_move_rule() const {

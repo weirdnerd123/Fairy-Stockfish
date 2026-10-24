@@ -1371,7 +1371,7 @@ bool Position::pseudo_legal(const Move m) const {
       return false;
 
   // The destination square cannot be occupied by a friendly piece
-  if (pieces(us) & to)
+  if (!self_capture() && pieces(us) & to)
       return false;
 
   // Handle the special case of a pawn move
